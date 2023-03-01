@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tavan Hesaplama</title>
+</head>
+<body>
+    
+    <script>
+        document.write("Hisse Senetleri<br>".bold());
+        var hisseSenetleri = new Array("Ahgaz","Oncosem","Ereğli","Astor","Sasa");
+       
+
+        hisseSenetleri.forEach(hisse => {
+            document.write(hisse.bold().italics()+", ")
+        });
+
+        document.write("<br>");
+
+        var hisseAdi = "Ahgaz";
+        var lotSayisi = 20;
+        var halkaArzFiyati = 40.5,tavanSayisi = 15, anaPara, guncelBakiye, toplamKazanc, guncelFiyat,sayac = 0,
+        anaPara = lotSayisi * halkaArzFiyati;
+        guncelBakiye = lotSayisi * halkaArzFiyati;
+
+        document.write("Hisse Adı : ".bold().italics()+hisseAdi+"<br>");
+        document.write("Halka Arz Fiyatı : ".bold().italics()+ halkaArzFiyati +" TL"+"<br>");
+        document.write("Lot Sayısı : ".bold().italics()+ lotSayisi +" TL"+"<br>");   
+        document.write("Anapara : ".bold().italics()+ anaPara +" TL"+"<br>");
+        document.write("Tavan Sayısı : ".bold().italics()+tavanSayisi+"<br>");   
+ 
+        function TavanHesapla(a) {
+            return a*1.1;
+        
+        }  
+        function TavanSonuc(b,c) {
+            document.writeln(c + ".Tavan : " + b+" TL<br>")
+        }
+
+        for (let index = 0; index < tavanSayisi; index++) {
+            sayac++;
+            guncelBakiye = TavanHesapla(guncelBakiye);
+            TavanSonuc(guncelBakiye,sayac);
+            
+        }
+        document.writeln(("Güncel Bakiye : ").bold().italics()+guncelBakiye+" TL<br>");
+        toplamKazanc = guncelBakiye - anaPara;
+        if (toplamKazanc > 0) {
+            document.writeln("Toplam Kazanç : ".bold().italics()+toplamKazanc+" TL<br>");
+        }
+        else {
+            document.writeln("Toplam Kayıp : ".bold().italics()+toplamKazanc+" TL<br>");
+        }
+               
+    </script>
+    <script>
+        function ColorMode(arkaplanRengi, yaziRengi) {
+            document.bgColor = arkaplanRengi;
+            document.fgColor = yaziRengi;
+
+        }
+    </script>
+    <input type="button" value="Dark Mode" onclick="ColorMode('#0d1a26','#e6e6e6')">
+    <input type="button" value="Light Mode" onclick="ColorMode('#e6e6e6','#0d1a26')">
+    
+    
+    
+   
+</body>
+</html>
